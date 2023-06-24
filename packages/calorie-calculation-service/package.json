@@ -1,0 +1,17 @@
+{
+    "name": "@liftograph/calorie-calculation-service",
+    "version": "0.0.0",
+    "description": "A service that converts workouts into calories burned",
+    "license": "ISC",
+    "main": "",
+    "publishConfig": {
+      "access": "public"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/MasonAdsero/LiftoGraph.git"
+    },
+    "scripts": {
+      "test": ""
+    }
+}
