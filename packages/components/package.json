@@ -1,0 +1,17 @@
+{
+  "name": "@liftograph/components",
+  "version": "0.0.0",
+  "description": "UI Components for Liftograph",
+  "license": "ISC",
+  "main": "",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MasonAdsero/LiftoGraph.git"
+  },
+  "scripts": {
+    "test": ""
+  }
+}

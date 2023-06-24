@@ -1,0 +1,17 @@
+{
+    "name": "@liftograph/app",
+    "version": "0.0.0",
+    "description": "Main application for Liftograph",
+    "license": "ISC",
+    "main": "",
+    "publishConfig": {
+      "access": "public"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/MasonAdsero/LiftoGraph.git"
+    },
+    "scripts": {
+      "test": ""
+    }
+}
