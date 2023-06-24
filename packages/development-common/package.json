@@ -1,0 +1,15 @@
+{
+    "name": "@liftograph/development-common",
+    "version": "0.0.0",
+    "description": "Contains all of the development related configuration files",
+    "license": "ISC",
+    "main": "",
+    "private": true,
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/MasonAdsero/LiftoGraph.git"
+    },
+    "scripts": {
+      "test": ""
+    }
+}
