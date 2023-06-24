@@ -1,4 +1,3 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const typescriptRule = {
@@ -28,10 +27,6 @@ const lessRule = {
 
 const config = {
     entry: './src/index.ts',
-    output: {
-        path: path.resolve(__dirname, './dist'),
-        filename: 'index_bundle.js',
-    },
     module: {
         rules: [
             typescriptRule,
@@ -41,11 +36,20 @@ const config = {
         extensions: ['.tsx', '.ts', '.jsx', '.js'],
     },
     target: ['web', 'es5'],
-    plugins: [new HtmlWebpackPlugin()],
+    plugins: [new HtmlWebpackPlugin(
+        {
+            templateContent: `
+                <html>
+                    <body id='application-root'>
+                    </body>
+                </html>
+            `
+        }
+    )],
 };
 
 module.exports = () => {
-    if (process.env.BUILD_ENV === 'production') {
+    if (process.env.NODE_ENV === 'production') {
         config.mode = 'production';
     } else {
         config.mode = 'development';
