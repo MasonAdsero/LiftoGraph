@@ -4,7 +4,6 @@
             "ESNext",
             "DOM"
         ],
-        "outDir": "dist",
         "removeComments": true,
         "target": "ES6",
         "jsx": "react",
