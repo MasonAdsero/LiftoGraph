@@ -8,7 +8,6 @@ function App() {
 }
 
 // Application root should never be null
-// @ts-ignore
 const applicationRoot = document.getElementById('application-root')!;
 const root = createRoot(applicationRoot);
 root.render(<App />);
