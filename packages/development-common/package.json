@@ -10,6 +10,7 @@
         "url": "git+https://github.com/MasonAdsero/LiftoGraph.git"
     },
     "scripts": {
+        "build": "echo No build script needed",
         "test": ""
     },
     "devDependencies": {

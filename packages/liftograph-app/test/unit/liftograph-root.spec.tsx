@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 
 describe('Mock tests to demonstrate jest', () => {
     it('should render index component', () => {
-        const appComponent = render(<LiftographRoot />);
-        expect(appComponent.getByTestId(DATA_TESTID)).toBeDefined();
+        const liftographRoot = render(<LiftographRoot />);
+        expect(liftographRoot.getByTestId(DATA_TESTID)).toBeDefined();
     });
 });

@@ -12,6 +12,7 @@
         "url": "git+https://github.com/MasonAdsero/LiftoGraph.git"
     },
     "scripts": {
+        "build": "",
         "test": ""
     },
     "dependencies": {
