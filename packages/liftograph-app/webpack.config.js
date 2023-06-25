@@ -6,7 +6,7 @@ module.exports = () =>  {
         ...getBaseConfig(),
         entry: './src/index.tsx',
         output: {
-            path: path.resolve(__dirname, './dist'),
+            path: path.resolve(__dirname, './bundle'),
             filename: 'index_bundle.js',
         },
     }
