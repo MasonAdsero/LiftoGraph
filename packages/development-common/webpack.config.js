@@ -30,6 +30,8 @@ const config = {
     module: {
         rules: [
             typescriptRule,
+            lessRule,
+            cssRule
         ],
     },
     resolve: {
