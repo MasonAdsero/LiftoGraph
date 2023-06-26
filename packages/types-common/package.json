@@ -5,13 +5,20 @@
     "license": "ISC",
     "main": "",
     "publishConfig": {
-      "access": "public"
+        "access": "public"
     },
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/MasonAdsero/LiftoGraph.git"
+        "type": "git",
+        "url": "git+https://github.com/MasonAdsero/LiftoGraph.git"
     },
     "scripts": {
-      "test": ""
+        "build": "",
+        "test": ""
+    },
+    "dependencies": {
+
+    },
+    "devDependencies": {
+
     }
 }

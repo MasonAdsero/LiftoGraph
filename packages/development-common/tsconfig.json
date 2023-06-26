@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "lib": [
+            "ESNext",
+            "DOM"
+        ],
+        "removeComments": true,
+        "target": "ES6",
+        "jsx": "react",
+
+        "baseUrl": "./",
+        "moduleResolution": "Node",
+        "esModuleInterop": true,
+
+        "sourceMap": true,
+        "sourceRoot": "/",
+
+        "alwaysStrict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+    },
+}
