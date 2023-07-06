@@ -11,6 +11,7 @@
         "baseUrl": "./",
         "moduleResolution": "Node",
         "esModuleInterop": true,
+        "declaration": true,
 
         "sourceMap": true,
         "sourceRoot": "/",
