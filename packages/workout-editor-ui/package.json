@@ -13,6 +13,7 @@
     },
     "scripts": {
         "build": "tsc",
+        "lint": "eslint src/**/*.tsx",
         "test": ""
     },
     "devDependencies": {
