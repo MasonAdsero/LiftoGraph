@@ -1,0 +1,8 @@
+{
+    "extends": "../../node_modules/@liftograph/development-common/tsconfig.json",
+    "include": ["src/**/*.ts", "src/**/*.tsx"],
+    "compilerOptions": {
+        "declaration": true,
+        "outDir": "./dist"
+    }
+}

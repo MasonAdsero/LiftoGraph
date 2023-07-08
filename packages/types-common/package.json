@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "description": "Contains all of the types and interfaces that are used across the different applications",
     "license": "ISC",
-    "main": "",
+    "main": "./dist/model.js",
     "publishConfig": {
         "access": "public"
     },
@@ -12,13 +12,15 @@
         "url": "git+https://github.com/MasonAdsero/LiftoGraph.git"
     },
     "scripts": {
-        "build": "",
-        "test": ""
+        "build": "npm run lint && tsc",
+        "test": "",
+        "lint": "eslint src/**/*.ts"
     },
     "dependencies": {
 
     },
     "devDependencies": {
-
+        "@liftograph/development-common": "^0.0.0",
+        "typescript": "^5.1.3"
     }
 }
