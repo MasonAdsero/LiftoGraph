@@ -12,7 +12,7 @@
         "url": "git+https://github.com/MasonAdsero/LiftoGraph.git"
     },
     "scripts": {
-        "build": "tsc",
+        "build": "npm run lint && tsc",
         "lint": "eslint src/**/*.tsx",
         "test": ""
     },
