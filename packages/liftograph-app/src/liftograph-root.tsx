@@ -24,16 +24,16 @@ function Toolbar() {
                 border: '1px solid blue'
             }
         }>
+            <Typography variant='h4'>Liftograph</Typography>
+            {/*Todo: Home icon button should only show if app not main */}
             <IconButton 
                 aria-label='home'
                 sx={{
-                    marginLeft: 0,
-                    marginRight: 5
+                    marginLeft: 'auto'
                 }}
             >
                 <Home />
             </IconButton>
-            <Typography variant='h4'>Liftograph</Typography>
         </BaseToolbar>
     );
 }
