@@ -1,11 +1,13 @@
 import React from 'react';
 import { IconButton, Toolbar as BaseToolbar, Typography, AppBar, CssBaseline, Box } from '@mui/material';
 import { Home } from '@mui/icons-material';
-import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { LiftographMain } from './pages/liftograph-main';
 import WorkoutEditorRoot from '@liftograph/workout-editor-ui';
 
 export const DATA_TESTID = 'liftograph-application-root';
+
+const ROOT_PATH = '/';
 
 /** Entry point to the Liftograph application */
 export function LiftographRoot() {
@@ -17,7 +19,7 @@ export function LiftographRoot() {
                     <Toolbar />
                 </AppBar>
                 <Routes>
-                    <Route path='/' element={<LiftographMain />} />
+                    <Route path={ROOT_PATH} element={<LiftographMain />} />
                     <Route path='workout-editor' element={<WorkoutEditorRoot />} />
                 </Routes>
             </Box>
@@ -26,7 +28,8 @@ export function LiftographRoot() {
 }
 
 function Toolbar() {
-    const changePageTo = useNavigate();
+    const { pathname } = useLocation();
+
     return (
         <BaseToolbar
             sx={{
@@ -34,18 +37,24 @@ function Toolbar() {
             }}
         >
             <Typography variant='h4'>Liftograph</Typography>
-            {/*Todo: Home icon button should only show if app not main */}
-            <IconButton 
-                aria-label='home'
-                sx={{
-                    marginLeft: 'auto'
-                }}
-                onClick={() => {
-                    changePageTo('/');
-                }}
-            >
-                <Home />
-            </IconButton>
+            { (pathname !== ROOT_PATH) ? (<HomeButton />) : null }
         </BaseToolbar>
+    );
+}
+
+function HomeButton() {
+    const changePageTo = useNavigate();
+    return (
+        <IconButton 
+            aria-label='home'
+            sx={{
+                marginLeft: 'auto'
+            }}
+            onClick={() => {
+                changePageTo('/');
+            }}
+        >
+            <Home />
+        </IconButton>
     );
 }
