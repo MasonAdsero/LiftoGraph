@@ -21,11 +21,11 @@ export function LiftographRoot() {
 
 function Toolbar() {
     return (
-        <BaseToolbar sx={
-            {
+        <BaseToolbar
+            sx={{
                 border: '1px solid blue'
-            }
-        }>
+            }}
+        >
             <Typography variant='h4'>Liftograph</Typography>
             {/*Todo: Home icon button should only show if app not main */}
             <IconButton 
