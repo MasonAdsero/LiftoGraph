@@ -1,25 +1,32 @@
 import React from 'react';
 import { IconButton, Toolbar as BaseToolbar, Typography, AppBar, CssBaseline, Box } from '@mui/material';
 import { Home } from '@mui/icons-material';
-import { RouterProvider } from 'react-router-dom';
-import { pageRouter } from './pages/page-router';
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import { LiftographMain } from './pages/liftograph-main';
+import WorkoutEditorRoot from '@liftograph/workout-editor-ui';
 
 export const DATA_TESTID = 'liftograph-application-root';
 
 /** Entry point to the Liftograph application */
 export function LiftographRoot() {
     return (
-        <Box data-testid={DATA_TESTID} sx={{border: '4px solid red'}}>
-            <CssBaseline />
-            <AppBar position='sticky'>
-                <Toolbar />
-            </AppBar>
-            <RouterProvider router={pageRouter} />
-        </Box>
+        <BrowserRouter>
+            <Box data-testid={DATA_TESTID} sx={{border: '4px solid red'}}>
+                <CssBaseline />
+                <AppBar position='sticky'>
+                    <Toolbar />
+                </AppBar>
+                <Routes>
+                    <Route path='/' element={<LiftographMain />} />
+                    <Route path='workout-editor' element={<WorkoutEditorRoot />} />
+                </Routes>
+            </Box>
+        </BrowserRouter>
     );
 }
 
 function Toolbar() {
+    const changePageTo = useNavigate();
     return (
         <BaseToolbar
             sx={{
@@ -34,9 +41,7 @@ function Toolbar() {
                     marginLeft: 'auto'
                 }}
                 onClick={() => {
-                    // It's worth noting that you're technically not supposed
-                    // to do this but I don't know of any other way around this
-                    pageRouter.navigate('/');
+                    changePageTo('/');
                 }}
             >
                 <Home />
