@@ -42,10 +42,13 @@ function Toolbar() {
     );
 }
 
+export const HOME_BUTTON_DATA_TESTID = 'liftograph-application-home-button';
+
 function HomeButton() {
     const changePageTo = useNavigate();
     return (
-        <IconButton 
+        <IconButton
+            data-testid={HOME_BUTTON_DATA_TESTID}
             aria-label='home'
             sx={{
                 marginLeft: 'auto'
