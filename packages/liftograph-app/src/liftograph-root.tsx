@@ -1,6 +1,8 @@
 import React from 'react';
 import { IconButton, Toolbar as BaseToolbar, Typography, AppBar, CssBaseline, Box } from '@mui/material';
 import { Home } from '@mui/icons-material';
+import { RouterProvider } from 'react-router-dom';
+import { pageRouter } from './pages/page-router';
 
 export const DATA_TESTID = 'liftograph-application-root';
 
@@ -12,7 +14,7 @@ export function LiftographRoot() {
             <AppBar position='sticky'>
                 <Toolbar />
             </AppBar>
-            <p>hi</p>
+            <RouterProvider router={pageRouter} />
         </Box>
     );
 }
@@ -30,6 +32,11 @@ function Toolbar() {
                 aria-label='home'
                 sx={{
                     marginLeft: 'auto'
+                }}
+                onClick={() => {
+                    // It's worth noting that you're technically not supposed
+                    // to do this but I don't know of any other way around this
+                    pageRouter.navigate('/');
                 }}
             >
                 <Home />
