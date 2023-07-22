@@ -1,6 +1,6 @@
 import { Box, Tab, Tabs } from '@mui/material';
 import React, { useState } from 'react';
-import TabPanel from '../../components/TabPanel';
+import TabPanel from '../../components/tab-panel';
 import styles from './styles.less'
 
 export const WORKOUT_EDITOR_LINK_DATA_TESTID = 'workout-editor-link';
