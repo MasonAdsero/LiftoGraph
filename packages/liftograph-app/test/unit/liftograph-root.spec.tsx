@@ -1,7 +1,8 @@
 import React from 'react';
-import { LiftographRoot, DATA_TESTID, HOME_BUTTON_DATA_TESTID } from '../../src/liftograph-root';
-import { render, RenderResult } from '@testing-library/react';
+import { LiftographRoot, HOME_BUTTON_DATA_TESTID } from '../../src/liftograph-root';
+import { act, render, screen } from '@testing-library/react';
 import { WORKOUT_EDITOR_LINK_DATA_TESTID } from '../../src/pages/liftograph-main';
+import { MemoryRouter } from 'react-router-dom';
 
 const mockedNavigate = jest.fn();
 
@@ -13,38 +14,42 @@ jest.mock('react-router-dom', () => {
     };
 });
 
-describe('Mock tests to demonstrate jest', () => {
-    let renderResult: RenderResult;
-    let liftographRootElement: HTMLElement;
+afterEach(() => { jest.clearAllMocks(); })
 
-    beforeEach(() => {
-        renderResult = render(<LiftographRoot />);
-        liftographRootElement = renderResult.getByTestId(DATA_TESTID);
-    });
-
-    it('should not show home button if the application path is set to root', () => {
-        expect(queryHomeButtonElement()).toBeNull();
-    });
-
-    it('should show home button if the application is not set to root', () => {
-        switchPageToWorkoutEditor();
-        expect(queryHomeButtonElement).toBeDefined();
-    });
-
-    it('should return to home page if application path is not set to root', () => {
-        switchPageToWorkoutEditor();
-        const homeButton = queryHomeButtonElement()!;
-        homeButton.click();
-        expect(mockedNavigate).toBeCalledTimes(1);
-    });
-
-    function switchPageToWorkoutEditor() {
-        const workoutEditorLink = renderResult
-            .getByTestId(WORKOUT_EDITOR_LINK_DATA_TESTID);
-        workoutEditorLink.click();
-    }
-
-    function queryHomeButtonElement() {
-        return renderResult.queryByTestId(HOME_BUTTON_DATA_TESTID);
-    }
+it('should not show home button if the application path is set to root', () => {
+    renderWithRouter();
+    expect(queryHomeButtonElement()).toBeNull();
 });
+
+it('should show home button if the application is not set to root', async () => {
+    renderWithRouter();
+    await switchPageToWorkoutEditor();
+    expect(queryHomeButtonElement()).toBeDefined();
+});
+
+it('should return to home page if application path is not set to root', async () => {
+    renderWithRouter();
+    await switchPageToWorkoutEditor();
+    const homeButton = await screen
+        .findByTestId(HOME_BUTTON_DATA_TESTID);
+    act(() => homeButton.click());
+    expect(mockedNavigate).toBeCalledTimes(1);
+});
+
+async function switchPageToWorkoutEditor() {
+    const workoutEditorLink = await screen
+        .findByTestId(WORKOUT_EDITOR_LINK_DATA_TESTID);
+    act(() => {workoutEditorLink.click()});
+}
+
+function queryHomeButtonElement() {
+    return screen.queryByTestId(HOME_BUTTON_DATA_TESTID);
+}
+
+function renderWithRouter() {
+    render(
+        <MemoryRouter>
+            <LiftographRoot />
+        </MemoryRouter>
+    );
+}
