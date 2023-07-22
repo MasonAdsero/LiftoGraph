@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconButton, Toolbar as BaseToolbar, Typography, AppBar, CssBaseline, Box } from '@mui/material';
 import { Home } from '@mui/icons-material';
-import { BrowserRouter, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { LiftographMain } from './pages/liftograph-main';
 import WorkoutEditorRoot from '@liftograph/workout-editor-ui';
 
@@ -12,18 +12,16 @@ const ROOT_PATH = '/';
 /** Entry point to the Liftograph application */
 export function LiftographRoot() {
     return (
-        <BrowserRouter>
-            <Box data-testid={DATA_TESTID} sx={{border: '4px solid red'}}>
-                <CssBaseline />
-                <AppBar position='sticky'>
-                    <Toolbar />
-                </AppBar>
-                <Routes>
-                    <Route path={ROOT_PATH} element={<LiftographMain />} />
-                    <Route path='workout-editor' element={<WorkoutEditorRoot />} />
-                </Routes>
-            </Box>
-        </BrowserRouter>
+        <Box data-testid={DATA_TESTID} sx={{border: '4px solid red'}}>
+            <CssBaseline />
+            <AppBar position='sticky'>
+                <Toolbar />
+            </AppBar>
+            <Routes>
+                <Route path={ROOT_PATH} element={<LiftographMain />} />
+                <Route path='workout-editor' element={<WorkoutEditorRoot />} />
+            </Routes>
+        </Box>
     );
 }
 
