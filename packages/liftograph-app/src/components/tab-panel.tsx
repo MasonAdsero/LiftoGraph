@@ -10,10 +10,13 @@ export interface TabPanelProps<T> {
     tabIndex: T;
 }
 
+export const BASE_DATA_TESTID = 'tab-panel-content-container';
+
 export default function TabPanel<T>(props: TabPanelProps<T>) {
     const { children, currentTab, tabIndex, ...other } = props;
     return (
         <div
+            data-testid={`${BASE_DATA_TESTID}_${tabIndex}`}
             hidden={currentTab !== tabIndex}
             {...other}
         >
