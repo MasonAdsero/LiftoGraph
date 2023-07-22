@@ -29,13 +29,13 @@ export function LiftographMain() {
                     currentTab={currentTab}
                     tabIndex={TabApplication.Workouts}
                 >
-                    RAHHHHHHHHH
+                    ToDo: Implement workouts sub-application
                 </TabPanel>
                 <TabPanel
                     currentTab={currentTab}
                     tabIndex={TabApplication.Calendar}
                 >
-                    Calendar
+                    ToDo: Implement calendar sub-application
                 </TabPanel>
             </Box>
         </div>
