@@ -10,7 +10,7 @@ describe(TabPanel.name, () => {
     it('should render content if currentTab equals tabIndex', () => {
         renderTabPanel(TAB_INDEX, TAB_INDEX);
         const tabContainer= screen
-            .getByTestId(`${BASE_DATA_TESTID}_${TAB_INDEX}`);
+            .getByTestId(`${BASE_DATA_TESTID}-${TAB_INDEX}`);
         expect(tabContainer).toBeVisible();
         expect(screen.getByTestId(MOCK_CONTENT_DATA_TESTID))
             .toBeInTheDocument();
@@ -19,7 +19,7 @@ describe(TabPanel.name, () => {
     it('should not render content if currentTab does not equal tabIndex', () => {
         renderTabPanel('', TAB_INDEX);
         const tabContainer= screen
-            .getByTestId(`${BASE_DATA_TESTID}_${TAB_INDEX}`);
+            .getByTestId(`${BASE_DATA_TESTID}-${TAB_INDEX}`);
         expect(tabContainer).not.toBeVisible();
         expect(screen.queryByTestId(MOCK_CONTENT_DATA_TESTID))
             .toBeNull();

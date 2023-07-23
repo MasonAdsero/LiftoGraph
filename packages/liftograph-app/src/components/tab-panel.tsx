@@ -16,7 +16,7 @@ export default function TabPanel<T>(props: TabPanelProps<T>) {
     const { children, currentTab, tabIndex, ...other } = props;
     return (
         <div
-            data-testid={`${BASE_DATA_TESTID}_${tabIndex}`}
+            data-testid={`${BASE_DATA_TESTID}-${tabIndex}`}
             hidden={currentTab !== tabIndex}
             {...other}
         >

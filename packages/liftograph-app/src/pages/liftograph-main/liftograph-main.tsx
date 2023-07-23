@@ -2,10 +2,12 @@ import { Box, Tab, Tabs } from '@mui/material';
 import React, { useState } from 'react';
 import TabPanel from '../../components/tab-panel';
 import styles from './styles.less'
+import { Link } from 'react-router-dom';
 
 export const WORKOUT_EDITOR_LINK_DATA_TESTID = 'workout-editor-link';
+export const TAB_DATA_TESTID = 'liftograph-tab-';
 
-enum TabApplication {
+export enum TabApplication {
     Workouts = 'workouts',
     Calendar = 'calendar'
 }
@@ -22,14 +24,32 @@ export function LiftographMain() {
                 }}
             >
                 <Tabs value={currentTab} onChange={changeTab}>
-                    <Tab label='Workouts' value={TabApplication.Workouts}/>
-                    <Tab label='Calendar' value={TabApplication.Calendar}/>
+                    <Tab
+                        data-testid={`
+                            ${TAB_DATA_TESTID}${TabApplication.Workouts}
+                        `}
+                        label='Workouts'
+                        value={TabApplication.Workouts}
+                    />
+                    <Tab
+                        data-testid={`
+                            ${TAB_DATA_TESTID}${TabApplication.Calendar}
+                        `}
+                        label='Calendar'
+                        value={TabApplication.Calendar}
+                    />
                 </Tabs>
                 <TabPanel
                     currentTab={currentTab}
                     tabIndex={TabApplication.Workouts}
                 >
                     ToDo: Implement workouts sub-application
+                    <Link
+                        data-testid={WORKOUT_EDITOR_LINK_DATA_TESTID}
+                        to='workout-editor'
+                    >
+                        Workout editor
+                    </Link>
                 </TabPanel>
                 <TabPanel
                     currentTab={currentTab}
