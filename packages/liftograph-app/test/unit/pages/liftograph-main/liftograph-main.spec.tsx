@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { LiftographMain, TAB_DATA_TESTID, TabApplication } from "../../../../src/pages/liftograph-main/liftograph-main";
+import { LiftographMain, TAB_DATA_TESTID, TabApplication } from '../../../../src/pages/liftograph-main/liftograph-main';
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import { BASE_DATA_TESTID as TAB_PANEL_DATA_TESTID } from '../../../../src/components/tab-panel';

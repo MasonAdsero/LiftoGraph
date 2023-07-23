@@ -1,5 +1,5 @@
 import React from 'react';
-import TabPanel, { BASE_DATA_TESTID } from "../../../src/components/tab-panel";
+import TabPanel, { BASE_DATA_TESTID } from '../../../src/components/tab-panel';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
