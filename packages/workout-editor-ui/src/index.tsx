@@ -1,7 +1,8 @@
 import React from 'react';
+import { ExerciseList } from './workout-editor-ui';
 
 export default function WorkoutEditorRoot() {
     return (
-        <p>Workout editor repo</p>
+        <ExerciseList/>
     );
 }
