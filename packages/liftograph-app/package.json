@@ -15,7 +15,7 @@
         "build": "npm run lint && npm run compile && npm run bundle",
         "bundle": "NODE_ENV=production webpack",
         "compile": "tsc",
-        "lint": "eslint src/**/*.ts src/**/*.tsx",
+        "lint": "eslint src/**/*.ts src/**/*.tsx test/**/*.tsx",
         "test": "jest",
         "start": "http-server ./bundle --push-state"
     },
@@ -31,6 +31,7 @@
     },
     "devDependencies": {
         "@liftograph/development-common": "^0.0.0",
+        "@testing-library/jest-dom": "^5.17.0",
         "@types/jest": "^29.5.2",
         "@types/react": "^18.2.14",
         "@types/react-dom": "^18.2.6",

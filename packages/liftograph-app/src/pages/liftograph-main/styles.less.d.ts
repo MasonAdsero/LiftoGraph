@@ -1,0 +1,1 @@
+export const liftographTabContainer: string;
