@@ -1,5 +1,7 @@
 import React from 'react';
-import {  Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import {  Box, List, ListItem, ListItemButton, ListItemText, Button, IconButton } from '@mui/material';
+import DeleteIcon  from '@mui/icons-material/Delete';
+import AddIcon from '@mui/icons-material/Add';
 import  type {Workout, Exercise} from "../../types-common/dist/model.d.ts";
 
 const test: Workout = [];
@@ -20,17 +22,26 @@ test.push(testExercise, testExerciseTwo);
 export function ExerciseList(){
         return (
             <Box sx={{width: '100%', maxWidth: 360, bgcolor: 'background.paper'}}>
-                <List>
-                    {test.map((item, index) => (
-                    <ListItem key={index}>
-                        <ListItemButton>
-                            <ListItemIcon>
-                            </ListItemIcon>
-                            <ListItemText primary={item.name}/>
-                        </ListItemButton>
-                    </ListItem>
-                    ))}
-                </List>
+                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    <Button sx={{marginLeft: 'auto'}} variant='outlined' startIcon={<AddIcon/>}>
+                        Add
+                    </Button>
+                </div>
+                <div>
+                    <List>
+                        {test.map((item, index) => (
+                        <ListItem key={index} secondaryAction={
+                                <IconButton edge='end' aria-kabel='delete'>
+                                    <DeleteIcon/>
+                                </IconButton>
+                                }>
+                            <ListItemButton>
+                                <ListItemText primary={item.name}/>
+                            </ListItemButton>
+                        </ListItem>
+                        ))}
+                    </List>
+                </div>
             </Box>
         );
 }
