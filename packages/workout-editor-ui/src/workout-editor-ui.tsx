@@ -20,8 +20,15 @@ const testExerciseTwo: Exercise = {
 
 test.push(testExercise, testExerciseTwo);
 
+
+
 export function ExerciseList(){
         const [addExercise, setAdd] = useState(false);
+        const [exerciseName, setName] = useState('');
+        const [exerciseForm, setForm] = useState('');
+        const [exerciseSets, setSet] = useState('');
+        const [exerciseReps, setRep] = useState('');
+
         return (
             <Box sx={{width: '100%', maxWidth: 360, bgcolor: 'background.paper', alignItems: 'center', marginTop: '8px'}}>
                 <div style={{ display: 'flex', flexDirection: 'column'}}>
@@ -31,9 +38,10 @@ export function ExerciseList(){
                     <>
                         <Button sx={{marginLeft: 'auto'}} variant='outlined' startIcon={<CloseIcon/>} onClick={()=> setAdd(!addExercise)}>Cancel</Button>
                         <Box component='form' sx={{flex: 1, display: 'flex', flexDirection: 'column',width: '100%', maxWidth: 360, bgcolor: 'background.paper', padding: '15px', paddingTop: '10px'}}>
-                            <TextField fullWidth id='exercise-name' label='name' variant='standard'/>
-                            <TextField fullWidth id='exercise-name' label='sets' variant='standard'/>
-                            <TextField fullWidth id='exercise-name' label='repetitions' variant='standard'/>
+                            <TextField fullWidth id='exercise-name' label='name' variant='standard' value={exerciseName} onChange={(e) => setName(e.target.value)}/>
+                            <TextField fullWidth id='exercise-form' label='form' variant='standard' value={exerciseForm} onChange={(e) => setForm(e.target.value)}/>
+                            <TextField fullWidth id='exercise-sets' inputProps={{min:0}} label='sets' type='number'  variant='standard' value={exerciseSets} onChange={(e) => setSet(e.target.value)}/>
+                            <TextField fullWidth id='exercise-reps' inputProps={{min:0}} label='repetitions' type='number' variant='standard' value={exerciseReps} onChange={(e) => setRep(e.target.value)}/>
                         </Box>
                         <Button sx={{marginLeft: 'auto'}} variant='outlined' onClick={()=> setAdd(!addExercise)}>Confirm</Button>
                     </>)
