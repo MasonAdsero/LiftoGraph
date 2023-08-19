@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "description": "Contains all of the types and interfaces that are used across the different applications",
     "license": "ISC",
-    "main": "./dist/model.js",
+    "main": "./dist/index.js",
     "publishConfig": {
         "access": "public"
     },
