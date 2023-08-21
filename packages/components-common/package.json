@@ -16,6 +16,7 @@
   "author": "Mason Adsero and Riley Cullen",
   "license": "ISC",
   "dependencies": {
+    "@liftograph/types-common": "^0.0.0",
     "react": "^18.2.0"
   }
 }
