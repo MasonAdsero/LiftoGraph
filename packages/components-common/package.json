@@ -1,0 +1,15 @@
+{
+  "name": "@liftograph/components-common",
+  "version": "0.0.0",
+  "description": "Common react components to be used across the application",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mason Adsero and Riley Cullen",
+  "license": "ISC"
+}
