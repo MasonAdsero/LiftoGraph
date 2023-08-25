@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {  TextField, Box, List, ListItem, ListItemButton, ListItemText, Button, IconButton, Dialog, DialogContent, DialogContentText, DialogTitle, DialogActions } from '@mui/material';
+import { TextField, Box, List, ListItem, ListItemButton, ListItemText, Button, IconButton, Dialog, DialogContent, DialogContentText, DialogTitle, DialogActions } from '@mui/material';
 import DeleteIcon  from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
-import  type {Workout, Exercise} from "../../types-common/dist/model.d.ts";
+import  type {Workout, Exercise} from "@liftograph/types-common";
 
 const test: Workout = [];
 const testExercise: Exercise = {
@@ -36,8 +36,6 @@ function DeleteDialog(props: DeleteDialogProps){
     };
 
     const handleCloseDelete = () => {
-        //TODO: Change to remove in accordance with backend rather than test list
-        //The next line needs the index
         test.splice(props.index,1);
         setOpen(false);
     }
@@ -45,7 +43,7 @@ function DeleteDialog(props: DeleteDialogProps){
     return (
         <div>
             <IconButton edge='end' aria-label='delete' onClick={handleClickOpen}>
-                <DeleteIcon/>
+                <DeleteIcon />
             </IconButton>
             <Dialog open={open} onClose={handleClose} aria-labelledby="delete-prompt" aria-describedby="delete-text">
                 <DialogTitle id="delete-prompt">
@@ -65,17 +63,24 @@ function DeleteDialog(props: DeleteDialogProps){
     );
 }
 
+
 function AddExercise(){
     const [addExercise, setAdd] = useState(false);
     const [exerciseName, setName] = useState('');
     const [exerciseForm, setForm] = useState('');
     const [exerciseSets, setSet] = useState(0);
     const [exerciseReps, setRep] = useState(0);
-    const [exerciseErrors, setErrors] = useState<Record<string,string>>({
-        exerciseName: "",
-        exerciseForm: "",
-        exerciseSets: "",
-        exerciseReps: ""
+    enum ExerciseErrorsText {
+        exerciseName = "Exercise must have a name",
+        exerciseForm = "",
+        exerciseSets = "Sets must be more than one",
+        exerciseReps = "Reps must be more than one"
+    }
+    const [exerciseErrors, setErrors] = useState<{[key: string]: boolean}>({
+        exerciseName: false,
+        exerciseForm: false,
+        exerciseSets: false,
+        exerciseReps: false
     });
 
     const AddToList = (event: React.FormEvent) => {
@@ -91,18 +96,18 @@ function AddExercise(){
     const validateForm = () => {
         let isValid = true;
         setErrors({});
-        const errors: Record<string, string> = {};
+        const errors: { [key: string]: boolean} = {};
         if(exerciseName == '')
         {
-            errors["exerciseName"] = 'Exercise must have a name';
+            errors["exerciseName"] = true;
             isValid = false;
         }
         if(exerciseSets < 1) {
-            errors["exerciseSets"] = 'Sets must be more than one';
+            errors["exerciseSets"] = true;
             isValid = false;
         }
         if(exerciseReps < 1) {
-            errors["exerciseReps"] = 'Reps must be more than one';
+            errors["exerciseReps"] = true
             isValid = false;
         }
         setErrors(errors);
@@ -125,7 +130,19 @@ function AddExercise(){
             <>
                 <Button sx={{marginLeft: 'auto'}} variant='outlined' startIcon={<CloseIcon/>} onClick={clearForm}>Cancel</Button>
                 <form onSubmit={AddToList}>
-                    <Box component='form' sx={{flex: 1, display: 'flex', flexDirection: 'column',width: '100%', maxWidth: 360, bgcolor: 'background.paper', padding: '15px', paddingTop: '10px', margin: '0 auto'}}>
+                    <Box
+                        component='form'
+                        sx={{
+                            flex: 1,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            width: '100%',
+                            maxWidth: 360,
+                            bgcolor: 'background.paper',
+                            padding: '15px',
+                            paddingTop: '10px',
+                            margin: '0 auto'
+                        }}>
                         <TextField
                             fullWidth
                             id='exercise-name'
@@ -133,8 +150,8 @@ function AddExercise(){
                             variant='standard'
                             value={exerciseName}
                             onChange={(e) => setName(e.target.value)}
-                            error={!!exerciseErrors.exerciseName}
-                            helperText={exerciseErrors.exerciseName}
+                            error={exerciseErrors.exerciseName}
+                            helperText={ExerciseErrorsText.exerciseName}
                         />
                         <TextField fullWidth
                             id='exercise-form'
@@ -151,8 +168,8 @@ function AddExercise(){
                             variant='standard'
                             value={exerciseSets}
                             onChange={(e) => setSet(parseInt(e.target.value))}
-                            error={!!exerciseErrors.exerciseSets}
-                            helperText={exerciseErrors.exerciseSets}
+                            error={exerciseErrors.exerciseSets}
+                            helperText={ExerciseErrorsText.exerciseSets}
                         />
                         <TextField
                             fullWidth
@@ -163,8 +180,8 @@ function AddExercise(){
                             variant='standard'
                             value={exerciseReps}
                             onChange={(e) => setRep(parseInt(e.target.value))}
-                            error={!!exerciseErrors.exerciseReps}
-                            helperText={exerciseErrors.exerciseReps}
+                            error={exerciseErrors.exerciseReps}
+                            helperText={ExerciseErrorsText.exerciseReps}
                         />
                     </Box>
                     <div style={{ display: 'flex', flexDirection: 'column'}}>
@@ -181,15 +198,15 @@ function AddExercise(){
 export function ExerciseList(){
         return (
             <Box sx={{width: '100%', maxWidth: 360, bgcolor: 'background.paper', alignItems: 'center', marginTop: '8px'}}>
-                <AddExercise/>
+                <AddExercise />
                 <div>
                     <List>
                         {test.map((item, index) => (
                         <ListItem key={index} secondaryAction={
-                                    <DeleteDialog index={index}/>
+                                    <DeleteDialog index={index} />
                                 }>
                             <ListItemButton>
-                                <ListItemText primary={item.name}/>
+                                <ListItemText primary={item.name} />
                             </ListItemButton>
                         </ListItem>
                         ))}
