@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "description": "Contains all of the types and interfaces that are used across the different applications",
     "license": "ISC",
-    "main": "./dist/model.d.ts",
+    "main": "./dist/index.d.ts",
     "publishConfig": {
         "access": "public"
     },
@@ -17,7 +17,7 @@
         "lint": "eslint src/**/*.ts"
     },
     "dependencies": {
-
+        "react": "^18.2.0"
     },
     "devDependencies": {
         "@liftograph/development-common": "^0.0.0",
