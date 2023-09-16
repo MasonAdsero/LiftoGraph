@@ -15,7 +15,6 @@ describe(TabPanel.name, () => {
         expect(screen.getByTestId(MOCK_CONTENT_DATA_TESTID))
             .toBeInTheDocument();
     });
-    
     it('should not render content if currentTab does not equal tabIndex', () => {
         renderTabPanel('', TAB_INDEX);
         const tabContainer= screen
@@ -24,7 +23,6 @@ describe(TabPanel.name, () => {
         expect(screen.queryByTestId(MOCK_CONTENT_DATA_TESTID))
             .toBeNull();
     });
-    
     function renderTabPanel(currentTab: string, tabIndex: string) {
         render(
             <TabPanel tabIndex={tabIndex} currentTab={currentTab}>
