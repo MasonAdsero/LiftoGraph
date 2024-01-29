@@ -1,8 +1,11 @@
 import { Box, Tab, Tabs } from '@mui/material';
 import React, { useState } from 'react';
+import { v4 } from 'uuid';
 import TabPanel from '../../components/tab-panel';
 import styles from './styles.less'
 import { Link } from 'react-router-dom';
+import { Button } from '@mui/base';
+import { addWorkout, getWorkoutsSelector, useStoreDispatch, useStoreSelection } from '@liftograph/application-store';
 
 export const WORKOUT_EDITOR_LINK_DATA_TESTID = 'workout-editor-link';
 export const TAB_DATA_TESTID = 'liftograph-tab-';
@@ -14,6 +17,8 @@ export enum TabApplication {
 
 export function LiftographMain() {
     const [currentTab, setCurrentTab] = useState(TabApplication.Workouts);
+    const workouts = useStoreSelection(getWorkoutsSelector);
+    const dispatch = useStoreDispatch();
 
     return (
         <div className={styles.liftographTabContainer}>
@@ -50,6 +55,34 @@ export function LiftographMain() {
                     >
                         Workout editor
                     </Link>
+
+                    {/* Below is temporary to test state is working. */}
+                    <br />
+                    <Button
+                        onClick={() => {
+                            let name = prompt('Name your workout') ?? 'test';
+                            dispatch(
+                                addWorkout({
+                                    name,
+                                    id: v4(),
+                                    exercises: []
+                                })
+                            );
+                        }}
+                    >
+                        Add Workout
+                    </Button>
+
+                    <h3>Workouts</h3>
+                    {
+                        workouts.map((workout) => {
+                            return (
+                                <p>
+                                    {workout.name}
+                                </p>
+                            );
+                        })
+                    }
                 </TabPanel>
                 <TabPanel
                     currentTab={currentTab}

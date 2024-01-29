@@ -1,4 +1,8 @@
-export type Workout = Exercise[];
+export type Workout = {
+    id: string;
+    name: string;
+    exercises: Exercise[]
+};
 
 export type Exercise = TimeExercise | RepetitionExercise;
 
