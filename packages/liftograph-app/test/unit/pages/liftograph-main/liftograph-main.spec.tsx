@@ -4,6 +4,8 @@ import { LiftographMain, TAB_DATA_TESTID, TabApplication } from '../../../../src
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import { BASE_DATA_TESTID as TAB_PANEL_DATA_TESTID } from '../../../../src/components/tab-panel';
+import { Provider } from 'react-redux';
+import { store } from '@liftograph/application-store';
 
 describe(LiftographMain.name, () => {
     it('should set currentTab correctly', () => {
@@ -34,7 +36,9 @@ describe(LiftographMain.name, () => {
     function renderLiftographMain() {
         render(
             <MemoryRouter>
-                <LiftographMain />
+                <Provider store={store}>
+                    <LiftographMain />
+                </Provider>
             </MemoryRouter>
         );
     }
