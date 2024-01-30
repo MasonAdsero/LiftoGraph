@@ -3,29 +3,21 @@ import { TextField, Box, List, ListItem, ListItemButton, ListItemText, Button, I
 import DeleteIcon  from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
-import  type {Workout, Exercise} from "@liftograph/types-common";
-
-const test: Workout = [];
-const testExercise: Exercise = {
-    name: "Sussy",
-    form: "sussier",
-    sets: 5,
-    repetitions: 20
-}
-const testExerciseTwo: Exercise = {
-    name: "Riley",
-    sets: 2,
-    duration: 30
-}
-
-test.push(testExercise, testExerciseTwo);
+import { addExerciseToWorkout, getWorkoutsSelector, removeExerciseFromWorkout, useStoreDispatch, useStoreSelection } from '@liftograph/application-store';
 
 interface DeleteDialogProps{
-    index:number;
+    /** Index of exercise in exercises[]. */
+    index: number;
+
+    /** ID associated with exercise's parent workout. */
+    parentWorkoutId: string;
 }
 
 function DeleteDialog(props: DeleteDialogProps){
+    const { index, parentWorkoutId } = props;
+
     const [open, setOpen] = useState(false);
+    const dispatch = useStoreDispatch();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -36,7 +28,12 @@ function DeleteDialog(props: DeleteDialogProps){
     };
 
     const handleCloseDelete = () => {
-        test.splice(props.index,1);
+        dispatch(
+            removeExerciseFromWorkout({
+                parentWorkoutId,
+                exerciseIndex: index
+            })
+        );
         setOpen(false);
     }
 
@@ -63,8 +60,14 @@ function DeleteDialog(props: DeleteDialogProps){
     );
 }
 
+interface AddExerciseProps {
+    /** ID of parent workout associated with an exercise. */
+    parentWorkoutId: string;
+}
 
-function AddExercise(){
+function AddExercise(props: AddExerciseProps){
+    const { parentWorkoutId } = props;
+
     const [addExercise, setAdd] = useState(false);
     const [exerciseName, setName] = useState('');
     const [exerciseForm, setForm] = useState('');
@@ -82,12 +85,23 @@ function AddExercise(){
         exerciseSets: false,
         exerciseReps: false
     });
+    const dispatch = useStoreDispatch();
 
     const AddToList = (event: React.FormEvent) => {
         //TODO: Change to add exercise to the apps list rather than test list
         event.preventDefault();
-        if(validateForm()){
-            test.push({name: exerciseName, form: exerciseForm, sets: exerciseSets, repetitions: exerciseReps});
+        if(validateForm()) {
+            dispatch(
+                addExerciseToWorkout({
+                    parentWorkoutId,
+                    exercise: {
+                        name: exerciseName,
+                        form: exerciseForm,
+                        sets: exerciseSets,
+                        repetitions: exerciseReps
+                    }
+                })
+            );
             setAdd(!addExercise);
             clearForm();
         }
@@ -195,23 +209,44 @@ function AddExercise(){
     )
 }
 
-export function ExerciseList(){
-        return (
-            <Box sx={{width: '100%', maxWidth: 360, bgcolor: 'background.paper', alignItems: 'center', marginTop: '8px'}}>
-                <AddExercise />
-                <div>
-                    <List>
-                        {test.map((item, index) => (
-                        <ListItem key={index} secondaryAction={
-                                    <DeleteDialog index={index} />
-                                }>
-                            <ListItemButton>
-                                <ListItemText primary={item.name} />
-                            </ListItemButton>
-                        </ListItem>
-                        ))}
-                    </List>
-                </div>
-            </Box>
-        );
+export function ExerciseList() {
+    // TODO don't hard code 0 index.
+    const workout = useStoreSelection(getWorkoutsSelector)[0] ?? {
+        name: 'Mock workout',
+        id: 'mock id',
+        exercises: [
+            {
+                name: "Sussy",
+                form: "sussier",
+                sets: 5,
+                repetitions: 20
+            },
+            {
+                name: "Riley",
+                sets: 2,
+                duration: 30
+            }
+        ],
+    };
+    return (
+        <Box sx={{width: '100%', maxWidth: 360, bgcolor: 'background.paper', alignItems: 'center', marginTop: '8px'}}>
+            <AddExercise parentWorkoutId={workout.id}/>
+            <div>
+                <List>
+                    {workout.exercises.map((item, index) => (
+                    <ListItem key={index} secondaryAction={
+                                <DeleteDialog
+                                    index={index}
+                                    parentWorkoutId={workout.id}
+                                />
+                            }>
+                        <ListItemButton>
+                            <ListItemText primary={item.name} />
+                        </ListItemButton>
+                    </ListItem>
+                    ))}
+                </List>
+            </div>
+        </Box>
+    );
 }

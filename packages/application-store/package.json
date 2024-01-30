@@ -1,0 +1,22 @@
+{
+  "name": "@liftograph/application-store",
+  "version": "0.0.0",
+  "description": "Contains all the global store logic to be used across the monorepo",
+  "main": "./dist/index.js",
+  "devDependencies": {
+    "@liftograph/development-common": "^0.0.0",
+    "typescript": "^5.3.3"
+  },
+  "scripts": {
+    "build": "npm run lint && tsc",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@liftograph/types-common": "^0.0.0",
+    "@reduxjs/toolkit": "^2.1.0",
+    "react-redux": "^9.1.0"
+  }
+}
