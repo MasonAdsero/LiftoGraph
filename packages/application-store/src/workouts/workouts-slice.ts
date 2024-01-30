@@ -2,13 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import { Exercise, Workout } from '@liftograph/types-common';
 
 interface AddWorkoutAction {
-    type: 'add-workout-action';
     /** Workout to add to state. */
     payload: Workout;
 }
 
 interface AddExerciseToWorkoutAction {
-    type: 'add-exercise-to-workout',
     payload: {
         /**
          * Workout ID associated with the workout we want to add an exercise to.
@@ -20,7 +18,6 @@ interface AddExerciseToWorkoutAction {
 }
 
 interface RemoveExerciseFromWorkout {
-    type: 'remove-exercise-from-workout',
     payload: {
         /**
          * Workout ID associated with the workout we want to add an exercise to.
