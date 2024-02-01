@@ -3,8 +3,8 @@ import { TextField, Box, List, ListItem, ListItemButton, ListItemText, Button, I
 import DeleteIcon  from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
-import { addExerciseToWorkout, getWorkoutsSelector, removeExerciseFromWorkout, useStoreDispatch, useStoreSelection } from '@liftograph/application-store';
-
+import { addExerciseToWorkout, getWorkoutById, removeExerciseFromWorkout, useStoreDispatch, useStoreSelection } from '@liftograph/application-store';
+import {useLocation} from "react-router-dom";
 interface DeleteDialogProps{
     /** Index of exercise in exercises[]. */
     index: number;
@@ -211,7 +211,8 @@ function AddExercise(props: AddExerciseProps){
 
 export function ExerciseList() {
     // TODO don't hard code 0 index.
-    const workout = useStoreSelection(getWorkoutsSelector)[0] ?? {
+    const idState = useLocation();
+    const workout = useStoreSelection(state => getWorkoutById(state, idState.state.workoutId)) ?? {
         name: 'Mock workout',
         id: 'mock id',
         exercises: [
