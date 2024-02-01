@@ -1,4 +1,4 @@
-import { Box, Tab, Tabs } from '@mui/material';
+import { Box, ListItem, ListItemText, Tab, Tabs } from '@mui/material';
 import React, { useState } from 'react';
 import { v4 } from 'uuid';
 import TabPanel from '../../components/tab-panel';
@@ -60,7 +60,7 @@ export function LiftographMain() {
                     <br />
                     <Button
                         onClick={() => {
-                            let name = prompt('Name your workout') ?? 'test';
+                            const name = prompt('Name your workout') ?? 'test';
                             dispatch(
                                 addWorkout({
                                     name,
@@ -77,9 +77,15 @@ export function LiftographMain() {
                     {
                         workouts.map((workout) => {
                             return (
-                                <p>
-                                    {workout.name}
-                                </p>
+                                <ListItem>
+                                    <Link
+                                        data-testid={WORKOUT_EDITOR_LINK_DATA_TESTID}
+                                        to='workout-editor'
+                                        state={{workoutId: workout.id}}
+                                    >
+                                        <ListItemText primary={workout.name}/>
+                                    </Link>
+                                </ListItem>
                             );
                         })
                     }
