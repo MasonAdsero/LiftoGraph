@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import React, { useState } from 'react';
-import { NavigationMenu } from './components/NavigationMenu';
-import { ApplicationContent } from './components/ApplicationContent';
+import { NavigationMenu } from './components/navigation-menu';
+import { ApplicationContent } from './components/application-context';
 import { ApplicationId } from './ApplicationId';
 
 export const WORKOUT_EDITOR_LINK_DATA_TESTID = 'workout-editor-link';
