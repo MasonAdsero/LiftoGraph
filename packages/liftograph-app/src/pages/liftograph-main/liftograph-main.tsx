@@ -17,6 +17,7 @@ export function LiftographMain() {
         <Box sx={{ display: 'flex' }}>
             <NavigationMenu 
                 onClick={setApplicationId}
+                currentApplicationId={currentApplicationId}
             />
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <ApplicationContent

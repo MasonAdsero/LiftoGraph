@@ -27,10 +27,11 @@ const DRAWER_WIDTH = 240;
 
 export interface NavigationMenuProps {
     onClick(id: ApplicationId): void;
+    currentApplicationId: ApplicationId;
 }
 
 export function NavigationMenu(props: NavigationMenuProps) {
-    const { onClick } = props;
+    const { onClick, currentApplicationId } = props;
 
     const menuContent = MENU_DATA.map(({ id, label, Icon }) => {
         return (
@@ -42,6 +43,7 @@ export function NavigationMenu(props: NavigationMenuProps) {
                 </ListItemIcon>
                 <ListItemButton
                     onClick={() => onClick(id)}
+                    selected={currentApplicationId === id}
                 >
                     <ListItemText primary={label} />
                 </ListItemButton>
