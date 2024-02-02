@@ -17,7 +17,12 @@ export function LiftographRoot() {
         <Provider store={store}>
             <Box data-testid={DATA_TESTID}>
                 <CssBaseline />
-                <AppBar position='sticky'>
+                <AppBar
+                    position='sticky'
+                    sx={{
+                        zIndex: (theme) => theme.zIndex.drawer + 1
+                    }}
+                >
                     <Toolbar />
                 </AppBar>
                 <Routes>
