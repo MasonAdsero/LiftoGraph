@@ -1,6 +1,6 @@
 import React from 'react';
 import { CalendarMonth, FitnessCenter } from '@mui/icons-material';
-import { ApplicationId } from '../ApplicationId';
+import { ApplicationId } from '../application-id';
 import { Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar } from '@mui/material';
 import { Box } from '@mui/system';
 

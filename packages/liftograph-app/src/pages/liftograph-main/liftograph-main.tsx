@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import React, { useState } from 'react';
 import { NavigationMenu } from './components/navigation-menu';
 import { ApplicationContent } from './components/application-context';
-import { ApplicationId } from './ApplicationId';
+import { ApplicationId } from './application-id';
 
 export const WORKOUT_EDITOR_LINK_DATA_TESTID = 'workout-editor-link';
 export const TAB_DATA_TESTID = 'liftograph-tab-';

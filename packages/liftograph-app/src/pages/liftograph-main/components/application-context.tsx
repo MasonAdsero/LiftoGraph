@@ -1,5 +1,5 @@
 import React from 'react';
-import { ApplicationId } from '../ApplicationId';
+import { ApplicationId } from '../application-id';
 import { Box } from '@mui/system';
 
 export interface ApplicationContentProps {
