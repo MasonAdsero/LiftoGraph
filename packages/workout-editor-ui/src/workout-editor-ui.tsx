@@ -210,7 +210,6 @@ function AddExercise(props: AddExerciseProps){
 }
 
 export function ExerciseList() {
-    // TODO don't hard code 0 index.
     const idState = useLocation();
     const workout = useStoreSelection(state => getWorkoutById(state, idState.state.workoutId)) ?? {
         name: 'Mock workout',
