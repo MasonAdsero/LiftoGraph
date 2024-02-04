@@ -11,7 +11,7 @@ export function initializeStore() {
     return configureStore<ApplicationState>({
         reducer: {
             workouts: workoutsSlice
-        } 
+        }
     })
 }
 
