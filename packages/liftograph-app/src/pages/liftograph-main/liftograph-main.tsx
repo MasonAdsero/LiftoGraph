@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { NavigationMenu } from './components/navigation-menu';
 import { ApplicationContent } from './components/application-context';
 import { ApplicationId } from './application-id';
+import { WorkoutDisplay } from '../../components/workout';
 
 export const WORKOUT_EDITOR_LINK_DATA_TESTID = 'workout-editor-link';
 export const TAB_DATA_TESTID = 'liftograph-tab-';
@@ -24,7 +25,7 @@ export function LiftographMain() {
                     id={ApplicationId.Workouts}
                     selectedApplication={currentApplicationId}
                 >
-                    ToDo: Implement workouts sub-application
+                    <WorkoutDisplay />
                 </ApplicationContent>
                 <ApplicationContent
                     id={ApplicationId.Calendar}
