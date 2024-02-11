@@ -1,49 +1,41 @@
 import React from 'react';
-import { CalendarMonth, FitnessCenter } from '@mui/icons-material';
-import { ApplicationId } from '../application-id';
 import { Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar } from '@mui/material';
 import { Box } from '@mui/system';
 
-interface MenuSchema {
-    id: ApplicationId;
+export interface MenuSchema<T> {
+    id: T;
     label: string;
     Icon?: React.FC;
 }
 
-const MENU_DATA: MenuSchema[] = [
-    {
-        id: ApplicationId.Workouts,
-        label: 'Workouts',
-        Icon: FitnessCenter
-    },
-    {
-        id: ApplicationId.Calendar,
-        label: 'Calendar',
-        Icon: CalendarMonth
-    }
-];
-
-const DRAWER_WIDTH = 240;
-
-export interface NavigationMenuProps {
-    onClick(id: ApplicationId): void;
-    currentApplicationId: ApplicationId;
+export interface NavigationMenuProps<T> {
+    onClick(id: T): void;
+    selectedMenuItem: T;
+    menuData: MenuSchema<T>[];
 }
 
-export function NavigationMenu(props: NavigationMenuProps) {
-    const { onClick, currentApplicationId } = props;
+export const BUTTON_TESTID = 'navigation-menu-button-';
+const DRAWER_WIDTH = 240;
 
-    const menuContent = MENU_DATA.map(({ id, label, Icon }) => {
+export function NavigationMenu<T>(props: NavigationMenuProps<T>) {
+    const { onClick, selectedMenuItem, menuData } = props;
+
+    const menuContent = menuData.map(({ id, label, Icon }) => {
         return (
             <ListItem key={id as string}>
                 <ListItemIcon>
                     {
-                        Icon ? <Icon />: null
+                        Icon ? <Icon /> : null
                     }
                 </ListItemIcon>
                 <ListItemButton
-                    onClick={() => onClick(id)}
-                    selected={currentApplicationId === id}
+                    data-testid={`${BUTTON_TESTID}${id}`}
+                    onClick={() => {
+                        if (id !== selectedMenuItem) {
+                            onClick(id);
+                        }
+                    }}
+                    selected={selectedMenuItem === id}
                 >
                     <ListItemText primary={label} />
                 </ListItemButton>
