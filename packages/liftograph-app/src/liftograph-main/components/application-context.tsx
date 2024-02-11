@@ -1,22 +1,19 @@
 import React from 'react';
-import { ApplicationId } from '../application-id';
 import { Box } from '@mui/system';
 
 export interface ApplicationContentProps {
     children: React.ReactNode;
-    id: ApplicationId;
-    selectedApplication: ApplicationId;
+    visible: boolean;
 }
 
 export function ApplicationContent(props: ApplicationContentProps) {
-    const { children, selectedApplication, id, ...other } = props;
+    const { children, visible } = props;
     return (
         <div
-            hidden={selectedApplication !== id}
-            {...other}
+            hidden={visible}
         >
             {
-                selectedApplication === id && (
+                visible && (
                     <Box>
                         {children}
                     </Box>

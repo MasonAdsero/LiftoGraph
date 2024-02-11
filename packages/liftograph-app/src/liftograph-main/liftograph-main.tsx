@@ -22,14 +22,12 @@ export function LiftographMain() {
             />
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <ApplicationContent
-                    id={ApplicationId.Workouts}
-                    selectedApplication={currentApplicationId}
+                    visible={currentApplicationId === ApplicationId.Workouts}
                 >
                     <Workouts />
                 </ApplicationContent>
                 <ApplicationContent
-                    id={ApplicationId.Calendar}
-                    selectedApplication={currentApplicationId}
+                    visible={currentApplicationId === ApplicationId.Calendar}
                 >
                     ToDo: Implement calendar sub-application
                 </ApplicationContent>
