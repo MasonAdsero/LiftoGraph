@@ -9,9 +9,7 @@ export interface ApplicationContentProps {
 export function ApplicationContent(props: ApplicationContentProps) {
     const { children, visible } = props;
     return (
-        <div
-            hidden={visible}
-        >
+        <div>
             {
                 visible && (
                     <Box>
