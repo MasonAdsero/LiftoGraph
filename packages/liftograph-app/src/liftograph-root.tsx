@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { IconButton, Toolbar as BaseToolbar, Typography, AppBar, CssBaseline, Box } from '@mui/material';
 import { Home } from '@mui/icons-material';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { LiftographMain } from './pages/liftograph-main/liftograph-main';
+import { LiftographMain } from './liftograph-main/liftograph-main';
 import WorkoutEditorRoot from '@liftograph/workout-editor-ui';
 import { store } from '@liftograph/application-store';
 
