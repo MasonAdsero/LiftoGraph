@@ -7,7 +7,7 @@ import { v4 } from 'uuid';
 
 export const WORKOUT_EDITOR_LINK_DATA_TESTID = 'workout-editor-link';
 
-export function WorkoutDisplay() {
+export function Workouts() {
     const workouts = useStoreSelection(getWorkoutsSelector);
     const dispatch = useStoreDispatch();
     return (
