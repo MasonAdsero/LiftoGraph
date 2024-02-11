@@ -1,7 +1,7 @@
 import React from 'react';
 import { LiftographRoot, HOME_BUTTON_DATA_TESTID } from '../../src/liftograph-root';
 import { act, render, screen } from '@testing-library/react';
-import { WORKOUT_EDITOR_LINK_DATA_TESTID } from '../../src/pages/liftograph-main/liftograph-main';
+import { WORKOUT_EDITOR_LINK_DATA_TESTID } from '../../src/liftograph-main/liftograph-main';
 import { MemoryRouter } from 'react-router-dom';
 
 const mockedNavigate = jest.fn();
